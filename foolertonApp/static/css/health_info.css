@@ -1,0 +1,223 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #F9ECE3;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+input {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+
+    font-family: 'Lato';
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    color: #1a1010;
+}
+input:disabled {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+
+    font-family: 'Lato';
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    color: #6C4A4A;
+}
+
+
+.main_content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.second_layer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#health_info_edit_btn {
+    margin-right: 212px;
+    margin-left: auto;
+}
+
+.health_info_header {
+    display: flex;
+    margin-left: 80px;
+}
+
+.health_info_header #health_info_title {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+    margin-left: 16px;
+}
+
+.main_fields {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    white-space: nowrap;
+
+    /* for text */
+    font-family: 'Lato';
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    color: #6C4A4A;
+}
+
+.age_field, .weight_field, .height_field, .bp_field, .hr_field, .mc_field, .medication_field, .allergies_field {
+    display: flex;
+    align-items: center;
+}
+
+.age_field, .weight_field, .height_field, .bp_field, .hr_field, .mc_field, .medication_field {
+    margin-bottom: 20px;
+}
+
+.allergies_field {
+    margin-bottom: 50px;
+}
+
+/* adjusting position of fields */
+#age_label {
+    margin-left: 212px;
+}
+
+#weight_label {
+    margin-left: 183px;
+}
+
+#height_label {
+    margin-left: 188px;
+}
+
+#bp_label {
+    margin-left: 116px;
+}
+
+#hr_label {
+    margin-left: 151px;
+}
+
+#mc_label {
+    margin-left: 80px;
+}
+
+#medication_label {
+    margin-left: 139px;
+}
+
+#allergies_label {
+    margin-left: 169px;
+}
+/* adjusting position of fields */
+
+#age_input_field, #weight_input_field, #height_input_field, #bp_input_field, #hr_input_field {
+    display: flex;
+    align-items: center;
+    background-color: #FFFBF8;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-left: 37px;
+    width: 160px;
+    height: 50px;
+}
+
+.form_input {
+    /* display: flex; */
+    align-items: center;
+    background-color: #FFFBF8;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-left: 37px;
+    width: 160px;
+    height: 50px;
+}
+
+.form_input::placeholder {
+    font-family: 'Lato';
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    color: #6c4a4a8c;
+}
+
+.form_input:disabled {
+    /* display: flex; */
+    align-items: center;
+    background-color: #fffbf8;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-left: 37px;
+    width: 160px;
+    height: 50px;
+}
+
+.form_input:disabled::placeholder {
+    font-family: 'Lato';
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    color: #6C4A4A;
+}
+
+
+#mc_input_field, #medication_input_field, #allergies_input_field, #mc_value, #medication_value, #allergies_value {
+    display: flex;
+    align-items: center;
+    background-color: #FFFBF8;
+    border-radius: 20px;
+    margin-right: 10%;
+    margin-left: 37px;
+    width: 100%;
+    height: 50px
+}
+
+#age_value, #weight_value, #height_value, #bp_value, #hr_value, #mc_value, #medication_value, #allergies_value {
+    padding-left: 30px;
+}
+
+.task_button {
+    background: #BF7B71;
+    /* margin-top: 6%; */
+    width: 30%;
+    padding: 1%;
+
+    border-radius: 30px;
+    border: none;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+    margin: auto;
+
+    text-align: center;
+}
+
+.task_button:hover {
+    background: #da998f;
+}
+
+.button_outside {
+    padding: 0;
+}

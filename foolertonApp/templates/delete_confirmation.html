@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Delete</title>
+	<link href="{% static 'css/mng_pat.css' %}" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700">
+
+</head>
+
+<body>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<div class="wrapper">
+		<div class="page_header">
+			FOOLERTON
+		</div>
+
+		<div class="main_columns">
+			<div class="sidebar">
+				<div class="sidebar_wrapper">
+
+					<h3>Patient:</h3>
+					<p id="patient_name"><a id="patient_link" href="">Mary Lee</a></p>
+					<div class="sidebar_line"></div>
+					<div class="sidebar_tabs">
+
+						<p class="sidebar_selected"><a id="tasks_link" href="./tasks_page_main.html">Tasks</a></p>
+						<p class="sidebar_item"><a id="healthInfo_link" href="./health_info.html">Health Information</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="main_content">
+				<div class="topbar">
+					<a id="account_link" href="">
+						<img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+						<span>John Tan</span>
+					</a>
+				</div>
+
+				<!-- Requires editing -->
+				<div class="main_task_content">
+					<div class="task_today_col">
+						<div class="task_col_header">
+							<img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+							<h6>Manage Patient Profile</h6>
+							<style>
+								div {
+									white-space: nowrap;
+								}
+							</style>
+							<div class="task_action">
+								<select>
+									<option value="0">Add patient profile</option>
+									<option value="1">Remove patient profile</option>
+									<option value="2">Create caretaker profile</option>
+									<option value="3">Remove caretaker profile</option>
+								</select>
+							</div>
+							<div>
+								<button type="button" id="action_select_button">Next</button>
+								<script>
+									swal({
+										title: "Are you sure you want to \n delete this patient profile?",
+										text: "Mary Tan",
+										icon: "warning",
+										buttons: {
+											back: { text: "Back", className: 'sweetactionbutton' },
+											confirm: { text: "Confirm", className: 'sweetactionbutton', value: "confirm" }
+										},
+										className: 'sweetactionbg'
+									})
+										.then((value) => {
+											switch (value) {
+												case "confirm":
+													swal("Patient profile has been deleted successfully!", {
+														icon: "success",
+														button: { text: "Return", className: 'sweetactionbutton' },
+														className: 'sweetactionbg'
+													});
+											}
+										});
+								</script>
+							</div>
+						</div>
+						<div class="tasklist_container">
+							<ul class="tasklist">
+
+
+								{% for task in tasklist %}
+								<li>
+
+								</li>
+								{%endfor%}
+
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

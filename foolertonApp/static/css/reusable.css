@@ -1,0 +1,166 @@
+html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #F9ECE3;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+/* Foolerton header */
+.page_header {
+    background: #DBA8A1;
+    text-align: center;
+
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 30px;
+    /* line-height: 39px; */
+    letter-spacing: 8px;
+    color: #FFFFFF;
+    padding: 1.8%;
+    width: 100%;
+
+    /* to fix position when scrolling */
+    position: sticky;
+    top: 0;
+}
+
+/* wraps the content in the page, so that we can put the header above the main content*/
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.main_area {
+    display: flex;
+    /* height: 100%; */
+    flex-grow: 1;
+}
+
+/*      sidebar stuff       */
+.sidebar {
+    background: #F4DFD0;
+    width: 15%;
+    overflow: hidden;
+}
+
+.sidebar_wrapper {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.sidebar h3 {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+    margin-top: 40px;
+}
+
+.sidebar #patient_name {
+    font-family: 'Lato';
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+    margin-top: 23px;
+}
+
+.sidebar_line {
+    background: #6C4A4A;
+    width: 100%;
+    height: 1.5px;
+    margin-top: 30px;
+}
+
+.sidebar_tabs {
+    margin-top: 30px;
+}
+
+.sidebar_selected {
+    font-family: 'Lato';
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #BF7B71;
+}
+
+.sidebar_item {
+    font-family: 'Lato';
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+}
+
+.main_content {
+    min-height: 100%;
+    flex: 1 1;
+}
+
+
+/*      topbar stuff       */
+.topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    padding-right: 50px;
+    padding-top: 30px;
+}
+
+.topbar #account_link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+
+    text-align: center;
+    font-family: 'Lato';
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 26px;
+    /* margin-left: 14px; */
+
+    color: #6C4A4A;
+}
+
+.topbar #account_link span {
+    min-width: 80%;
+}
+
+.topbar #account_link img {
+    margin-right: 3px;
+}
+
+.topbar img {
+    margin-right: 30px;
+    height: 33px;
+}
+
+button {
+    background-color: #BF7B71;
+    border: none;
+    border-radius: 36px;
+    /* padding-top: 8px;
+    padding-bottom: 8px; */
+    color: white;
+    width: 160px;
+    height: 50px;
+    font-size: 18px;
+    font-family: 'Montserrat';
+    text-align: center;
+    letter-spacing: 0.6px;
+    box-shadow: 2px 4px 4px rgb(0, 0, 0, 0.25);
+}

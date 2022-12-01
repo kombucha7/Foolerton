@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Task Page</title>
+    <link href="{% static 'css/task.css' %}" rel="stylesheet" />
+    <!-- <link href="{% static 'css/reusable.css' %}" rel="stylesheet" /> -->
+    <link href="{% static 'css/CalendarPicker.style.css' %}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="page_header">
+            <a id="healthInfo_link" href="/createtasks/{{current}}/{{dates}}">FOOLERTON</a>
+        </div>
+
+        <div class="main_columns">
+            <div class="sidebar">
+                <div class="sidebar_wrapper">
+
+                    <h3>Patient:</h3>
+                    {% for ppl in people %}
+                    <p id="patient_name"><a id="patient_link"
+                            href="http://127.0.0.1:8000/createtasks/{{ ppl.pk }}/{{dates}}">{{ppl.name}}</a></p>
+                    {%endfor%}
+                    <div class="sidebar_line"></div>
+                    <div class="sidebar_tabs">
+                        <p class="sidebar_selected"><a id="tasks_link" class="taskbar_link"
+                                href="http://127.0.0.1:8000/createtasks/{{current}}/{{dates}}">Tasks</a></p>
+                        <p class="sidebar_item"><a id="healthInfo_link" class="taskbar_link"
+                                href="http://127.0.0.1:8000/healthinfo/{{current}}">Health Information</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="main_content">
+                <div class="topbar">
+                    <a id="account_link" href="http://127.0.0.1:8000/docacc">
+                        <img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                        <span>{{name}}</span>
+                    </a>
+                </div>
+                <div class="main_task_content">
+                    <div class="task_today_col">
+                        <div class="task_col_header">
+                            <img src="{% static 'assets/task_icon.svg' %}" />
+                            <span>Tasks for <span id="current-datestring"></span></span>
+                        </div>
+                        <div class="tasklist_container">
+                            <ul class="tasklist">
+                                {% for task in comments %}
+                                <li>
+                                    <button class="task_checkbox" id="checkbox_{{task.tasked.id}}"></button>
+                                    <button class="tasklist_collapsible"
+                                        id="task_{{task.tasked.id}}">{{task.tasked.details}}
+                                        {{task.tasked.time}}</button>
+                                    <div class="task_comments_container">
+                                        {%for com in task.comment%}
+                                        <div class="single_comment_container">
+                                            <p class="comment_content">{{com.comment}}</p>
+                                            <p class="comment_author">{{com.editBy}}</p>
+                                            <p class="comment_datetime">{{com.editDate}} {{com.time}}</p>
+                                        </div>
+                                        {%endfor%}
+                                    </div>
+                                </li>
+
+                                {%endfor%}
+
+                            </ul>
+                        </div>
+                        <div class="task_action">
+                            <select id="action_select" class="select_default">
+                                <option value="0">View Tasks</option>
+                                <option value="add_comment">Add Comment</option>
+                            </select>
+                            <button type="button" id="action_select_button">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Only one of three will be shown at any one time, depending on the action selected -->
+                    <!-- Calendar Block -->
+                    <div id="calendar_col">
+                        <div class="task_col_header">
+                            <img src="{% static 'assets/calendar_icon.svg' %}" />
+                            <span>Calendar</span>
+                        </div>
+                        <div id="calendar_container" class="{% static 'assets/arrow_left_icon.svg' %}">
+                            <div class="calendar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Add Task Block -->
+                    <div id="add_task_col">
+                        <div class="task_col_header">
+                            <img src="{% static 'assets/task_icon.svg' %}" />
+                            <span id="task_create_status">Add Task</span>
+                        </div>
+                        <div class="add_task_container">
+                            <form action="{% url 'foolerton:createdtasks' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="form_type" value="addtask">
+                                <p class="field_label">Task Description:</p>
+                                <input type="text" id="task_description_field" name="taskdesc">
+                                <p class="field_label">Time of completion:</p>
+                                <input type="time" id="task_time_field" name="timecomplete">
+                                <p class="field_label">Date of Completion:</p>
+                                <input type="date" id="task_date_field" name="datecomplete">
+                                <p class="field_label">For:</p>
+                                <select id="person_select" name="person" class="select_default">
+                                    {% for ppl in people %}
+                                    <option value={{ppl.name}}>{{ppl.name}}</option>
+                                    {%endfor%}
+                                </select>
+                                <input type="submit" id="add_task_button" value="Create">
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Comment Block -->
+                    <div id="add_comment_col" class="task_col">
+                        <div class="task_col_header">
+                            <img src="{% static 'assets/task_icon.svg' %}" />
+                            <span id="comment_create_status">Add Comment</span>
+                        </div>
+                        <div class="add_comment_container">
+                            <form action="{% url 'foolerton:createcomments' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="name" value="{{current}}">
+                                <input type="hidden" name="date" value="{{dates}}">
+                                <p class="field_label">Task Selected</p>
+                                <select id="action_select" class="select_default" name="task">
+                                    {%for task in comments%}
+                                    <option value="{{task.tasked.pk}}">{{task.tasked.details}} {{task.tasked.time}}
+                                    </option>
+                                    {%endfor%}
+                                </select>
+                                <p class="field_label">Comment Description:</p>
+                                <textarea id="comment_description_field" name="comment_desc" cols="50"
+                                    rows="10"></textarea>
+                                <input type="submit" id="add_comment_button" class="task_button" value="Create">
+                            </form>
+                        </div>
+
+                        <!-- <button type="button" id="add_comment_button" class="task_button">Create</button> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var task_complete_status = "{{ task_completedFlag }}";
+    var task_complete_status = JSON.parse(task_complete_status);
+</script>
+
+
+<!-- For the calendar -->
+<script src="{% static 'scripts/CalendarPicker.js' %}"></script>
+<!-- For misc stuff -->
+<script src="{% static 'scripts/script_caretaker.js' %}"></script>
+
+
+
+
+</html>

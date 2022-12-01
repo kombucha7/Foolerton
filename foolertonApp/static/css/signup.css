@@ -1,0 +1,174 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.split_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F9ECE3;
+    width: 62%;
+}
+
+.split_left_content {
+    margin: auto;
+}
+
+.split_right {
+    width: 38%;
+    background-color: #F4DFD0;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.app_header {
+    font-family: 'Montserrat';
+    color: #6C4A4A;
+    font-size: 53px;
+    letter-spacing: 13px;
+    margin-bottom: 6%;
+    text-align: center;
+}
+
+.loginForm {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.signup_header {
+    font-family: 'Montserrat';
+    color: #6C4A4A;
+    font-size: 35px;
+    letter-spacing: 3px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 90px;
+}
+
+.name_field, .email_field, .password_field, .reenter_password_field {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: 'Lato';
+    color: #6C4A4A;
+    font-size: 17px;
+    letter-spacing: 0.6px;
+}
+
+input[type="text"], input[type="password"] {
+    border: none;
+    background-color: #FFFBF8;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    margin-top: 16px;
+    border-radius: 18px;
+    color: #6C4A4A;
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: 'Lato';
+    letter-spacing: 0.6px;
+}
+
+.name_input_label, .email_input_label_login {
+    margin-top: 10px;
+}
+
+.email_input_label_reg, .password_input_label, .reenter_password_input_label {
+    margin-top: 30px;
+}
+
+
+.submit_button {
+
+    text-align: center;
+    margin-top: 42px;
+    background-color: #BF7B71;
+    border: none;
+    border-radius: 36px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    width: 160px;
+    font-size: 18px;
+    font-family: 'Montserrat';
+    text-align: center;
+    letter-spacing: 0.6px;
+    box-shadow: 2px 4px 4px rgb(0, 0, 0, 0.25);
+}
+
+.submit_button:hover {
+    background: #da998f;
+}
+
+.login_no_account {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-family: 'Lato';
+    font-size: 15px;
+    letter-spacing: 0.6px;
+    color: #6C4A4A;
+}
+
+.login_create_account {
+    color: #BF7B71;
+    font-family: 'Lato';
+    font-size: 15px;
+    letter-spacing: 0.6px;
+    background-color: rgb(0, 0, 0, 0);
+    border: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #6C4A4A
+}
+
+.message_wrapper {
+    display: none;
+    width: 400px;
+}
+
+.message {
+
+    display: flex;
+    align-items: center;
+    background-color: #FFFBF8;
+    border-radius: 20px;
+    margin-right: 20px;
+    width: 400px;
+    height: 50px;
+    padding: 30px;
+    box-sizing: border-box;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 20px;
+    color: #854343;
+
+
+}

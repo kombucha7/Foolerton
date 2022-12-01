@@ -1,0 +1,136 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Doctor Account Update Details</title>
+    <link href="{% static 'css/reusable.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/doc_account.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="page_header">
+            <a class="white_link" href="/createtasks/{{current}}/{{date}}">FOOLERTON</a>
+        </div>
+
+        <div class="main_area">
+
+            <div class="sidebar">
+                <div class="sidebar_wrapper">
+
+                    <h3>Patient:</h3>
+                    {% for ppl in people %}
+                    <p id="patient_name">
+                        <a id="patient_link" href="/createtasks/{{ ppl.pk }}/{{date}}">{{ppl.name}}</a>
+                    </p>
+                    {%endfor%}
+                    <div class="sidebar_line"></div>
+                    <div class="sidebar_tabs">
+                        <p class="sidebar_item"><a class="sidebar_link"
+                                href="http://127.0.0.1:8000/createtasks/{{current}}/{{date}}">Tasks</a></p>
+                        <p class="sidebar_selected"><a class="sidebar_link"
+                                href="http://127.0.0.1:8000/healthinfo/{{current}}">Health Information</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="main_content">
+                <div class="topbar">
+                    <div class="topbar_child"><img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                    </div>
+                    <a id="account_link" href="http://127.0.0.1:8000/docacc">
+                        <div class="topbar_child">
+                            <p>{{name}}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="contents">
+                    <div class="title">
+                        <img src="{% static 'assets/account_icon.svg' %}" id="accountIcon" />
+                        <span id="titletext"> Update Details </span>
+                    </div>
+
+                    <div class="left_content">
+                        <div class="display_text">
+                            <p> Old Name: </p>
+                            <div class="text_field">
+                                <p id="name_value">{{name}}</p>
+                            </div>
+                        </div>
+
+                        <div class="display_text">
+                            <p>Old Email Address: </p>
+                            <div class="text_field">
+                                <p id="email_value">{{email}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right_content">
+                        <form action="http://127.0.0.1:8000/update" method="POST" id="update_form">
+                            {%csrf_token%}
+                            <div class="display_text">
+                                <p> New Name: </p>
+                                <input id="new_name" class="input_field" type="text" size=50 name="name">
+                            </div>
+
+                            <div class="display_text">
+                                <p>New Email Address: </p>
+                                <input id="new_email" class="input_field" type="text" size=50 name="email">
+                            </div>
+                        </form>
+
+                        <div id="status_message_wrapper" class="message_wrapper">
+                            <span id="status_message" class="message" style="width: fit-content;"></span>
+                        </div>
+                        <!-- <input class="task_button" type="submit" value="Save"> -->
+                        <button id="submit_btn" class="task_button">Save</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+<script>
+    function validateEmail(email) {
+        console.log(email);
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        console.log(re.test(email));
+        return re.test(email);
+    }
+
+    // Check input before submitting
+    var form_el = document.getElementById("update_form");
+    var new_name_el = document.getElementById("new_name");
+    var new_email_el = document.getElementById("new_email");
+    var submit_btn_el = document.getElementById("submit_btn");
+    var message_el = document.getElementById("status_message");
+    var message_wrapper_el = document.getElementById("status_message_wrapper");
+
+    submit_btn_el.addEventListener("click", () => {
+        // Handle blank inputs by using old value
+        if (new_name_el.value == "") {
+            new_name_el.value = "{{name}}";
+        }
+        if (new_email_el.value == "") {
+            new_email_el.value = "{{email}}"
+        }
+        // Block invalid emails
+        if (!validateEmail(new_email_el.value)) {
+            message_el.textContent = "Please provide a valid email!";
+            message_wrapper_el.style.display = "block";
+            return;
+        }
+        else {
+            message_wrapper_el.style.display = "none";
+        }
+        form_el.submit();
+    });
+
+
+</script>
+
+</html>

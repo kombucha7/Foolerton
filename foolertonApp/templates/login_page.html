@@ -1,0 +1,52 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <link href="{% static 'css/signup.css'%}" rel="stylesheet" />
+        
+        <!--fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:600">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <div class="split_left" >
+                <div class="split_left_content">
+                    <p class="app_header">FOOLERTON</p>
+                    <img src="{% static 'assets/logo.png'%}" width="560" height="380">                    
+                </div>
+            </div>
+            <div class="split_right">
+                <p class="signup_header">Login</p>
+                <form class="loginForm" method="POST" action="{% url 'foolerton:login' %}" autocomplete="on">
+                    {% csrf_token %}
+                    <div class="email_field">
+                        <label class="email_input_label_login" for="email"> <b>Email address:</b> </label>
+                        <input type="text" name="email" id="email" required>                        
+                    </div>
+
+                    <div class="password_field"> 
+                        <label class="password_input_label" for="password"> <b>Password:</b> </label>
+                        <input type="password" name="password" id="password"required>                        
+                    </div>
+
+                    <button class="submit_button">Login</button>
+                </form>
+
+                <div class="login_no_account">
+                    <a>Don’t have an account?</a>
+                    <a href="{% url 'foolerton:createuser' %}"><button class="login_create_account" >Click here to create.</button></a>
+                </div>
+
+                <center>
+                    <p class="signup_header">   
+                        {{message}}
+                    </p>
+                </center>
+            </div>
+        </div>
+    </body>
+</html>
+

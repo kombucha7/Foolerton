@@ -1,0 +1,29 @@
+<!--- JUST FOR TESTING-->
+<!--- JUST FOR TESTING-->
+<!--- JUST FOR TESTING-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method = "post" action = "createdtasks">
+        {% csrf_token %}
+        Task Description : <input type = "text" name = "taskdesc" ><br>
+        Time of Completion : <input type = "text" name = "timecomplete"> <br>
+        Date of Completion: <input type = "text" name = "datecomplete"> <br>
+        <input type="submit" value="Submit">
+     </form>
+     <p>test</p>
+     {% for task in tasklist %}
+     <div>{{task.details}} : {{task.date}} 
+        <button>Update</button>
+        <a href = "{% url 'foolerton:deleteTask' task.id %}"><button>delete</button> </a>
+   
+     {%endfor%}
+</body>
+</html>
+<!--- JUST FOR TESTING-->

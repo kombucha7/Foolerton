@@ -1,0 +1,429 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #F9ECE3;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.page_header {
+    background: #DBA8A1;
+    text-align: center;
+
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 30px;
+    /* line-height: 39px; */
+    letter-spacing: 8px;
+    color: #FFFFFF;
+    padding: 1.8%;
+    width: 100%;
+
+    /* to fix position when scrolling */
+    position: sticky;
+    top: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.main_columns {
+    display: flex;
+    /* height: 100%; */
+    flex-grow: 1;
+}
+
+/*      sidebar stuff       */
+.sidebar {
+    background: #F4DFD0;
+    width: 15%;
+    overflow: hidden;
+}
+
+.sidebar_wrapper {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.sidebar h3 {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+    margin-top: 40px;
+}
+
+.sidebar #patient_name {
+    font-family: 'Lato';
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+    margin-top: 23px;
+}
+
+.sidebar_line {
+    background: #6C4A4A;
+    width: 100%;
+    height: 1.5px;
+    margin-top: 30px;
+}
+
+.sidebar_tabs {
+    margin-top: 30px;
+}
+
+.sidebar_selected {
+    font-family: 'Lato';
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #BF7B71;
+}
+
+.sidebar_item {
+    font-family: 'Lato';
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+}
+
+.main_content {
+    min-height: 100%;
+    flex: 1 1;
+}
+
+.topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    padding: 1% 2% 1% 0;
+
+}
+
+.topbar #account_link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+
+    text-align: center;
+    margin: 1%;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+}
+
+.topbar #account_link span {
+    min-width: 80%;
+}
+
+.topbar span, img {
+    margin: 0 0.5%;
+    height: 30px;
+}
+
+.main_task_content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.task_today_col {
+    width: 40%;
+    max-height: 500px;
+}
+
+.task_col_header {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+    display: flex;
+    align-items: center;
+    /* align-content: center; */
+    /* justify-content: space-around; */
+
+    margin-bottom: 5%;
+
+}
+
+.task_col_header img+span {
+    margin-left: 10px;
+}
+
+.tasklist_container {
+    border-radius: 20px;
+    background: #FFFBF8;
+    padding: 2%;
+    margin-bottom: 8%;
+    min-height: 60%;
+    max-height: 60%;
+    overflow-y: auto;
+
+}
+
+.tasklist {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+
+    list-style: none;
+
+}
+
+.task_checkbox {
+    background: none;
+    font-size: 20px;
+}
+
+.task_checkbox:hover {
+    color: #a57373;
+}
+
+.task_checkbox::after {
+    content: "\2610";
+}
+
+.task_done::after {
+    content: "\2611";
+}
+
+
+.tasklist_collapsible {
+    cursor: pointer;
+    padding: 18px;
+    width: 90%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+
+    background: none;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+
+}
+
+
+
+.active, .tasklist_collapsible:hover {
+    color: #a57373;
+}
+
+.task_comments_container {
+    display: none;
+    overflow: hidden;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+
+    color: #BF7B71;
+
+}
+
+.single_comment_container {
+    background: #f3efec;
+    padding: 5px;
+    margin-bottom: 3px;
+
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.comment_content {
+    margin: 0;
+}
+
+.comment_author, .comment_datetime {
+    font-size: 12px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+.select_default, button {
+    border: none;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+}
+
+.select_default {
+    padding: 3%;
+    border-radius: 10px;
+    min-width: 200px;
+    max-width: 40%;
+}
+
+#action_select_button {
+    background: #BF7B71;
+    margin-left: 10%;
+    width: 30%;
+    padding: 2%;
+
+    border-radius: 30px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+
+#action_select_button:hover {
+    background: #da998f;
+}
+
+
+
+#calendar_container {
+    background: #FFFBF8;
+    /* padding: 10px 20px; */
+    border-radius: 20px;
+    /* display: none; */
+    /* max-height: 50%; */
+}
+
+#calendar_container *{
+    scale: 0.95;
+}
+
+.task_col {
+    width: 40%;
+    max-height: 500px;
+}
+
+.field_label {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+}
+
+.add_task_container input,.add_comment_container input, .display_box {
+    background: #FFFBF8;
+    border-radius: 20px;
+    border: none;
+    width: 90%;
+    padding: 3%;
+
+    display: block;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+}
+
+.task_button, .add_task_container .task_button, .add_comment_container .task_button {
+    background: #BF7B71;
+    margin-top: 6%;
+    width: 30%;
+    padding: 2%;
+
+    border-radius: 30px;
+    border: none;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+
+.task_button:hover {
+    background: #da998f;
+}
+
+#selected_task_description,#comment_description_field{
+    background: #FFFBF8;
+    border-radius: 20px;
+    border: none;
+    width: 90%;
+    padding: 3%;
+    height: 170px;
+    overflow-y: auto;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #6C4A4A;
+}
+

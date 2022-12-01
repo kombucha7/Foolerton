@@ -1,0 +1,41 @@
+
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'foolerton:login' %}">
+    {% csrf_token %}
+    <table>
+        <div class="col-md-10">
+            <input type="text" id="email" placeholder="email" name="email">
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="password" placeholder="password" name="password">
+        </div>
+    </table>
+    <input type="submit" value="login_user">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+
+  <div>
+    {{message}}
+  </div>
+
+  {# Assumes you setup the password_reset view in your URLconf #}
+  {#<p><a href="{% url 'password_reset' %}">Lost password?</a></p> KIV#}
+
+{% endblock %}
+
+<a href="{% url 'foolerton:createtasks' %}"><button>testing for create task page</button></a>

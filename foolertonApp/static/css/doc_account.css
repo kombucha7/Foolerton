@@ -1,0 +1,272 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #F9ECE3;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 20px;
+    color: #6C4A4A;
+}
+
+button {
+    font-size: 20px;
+    font-family: "Lato";
+    color: white;
+    padding: 10px 60px;
+    border-radius: 30px;
+    border: #BF7B71;
+    background-color: #BF7B71;
+}
+
+button:hover {
+    background: #da998f;
+}
+
+/* form {
+    height: 100%;
+} */
+
+/* .page_header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    background: #DBA8A1;
+    color: white;
+    font-family: 'Montserrat';
+    padding: 5px;
+    z-index: 1;
+} */
+
+/* .sidebar {
+    position: absolute;
+    height: 100%;
+    width: 250px;
+    background: #F4DFD0;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    padding-left: 20px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    color: #6C4A4A;
+} */
+a.sidebar_link:link, a.sidebar_link:visited {
+    color: #6C4A4A;
+    text-decoration: inherit;
+}
+
+a.white_link:link, a.header_link:visited {
+    color: white;
+    text-decoration: inherit;
+}
+
+.main_columns {
+    display: flex;
+    /* height: 100%; */
+    flex-grow: 1;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 1% 2% 1% 0;
+}
+
+.topbar_child {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    color: #6C4A4A
+}
+
+.topbar_child {
+    margin-right: 1rem;
+}
+
+.topbar_child #account_icon {
+    margin-right: 0.5rem;
+}
+
+.contents {
+    position: absolute;
+    left: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    max-height: 90%;
+    width: 100%;
+    /* overflow-x: hidden; */
+
+}
+
+.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #6C4A4A;
+    margin-bottom: 40px;
+}
+
+.title span {
+    margin-left: 10px;
+}
+
+.title #accountIcon_PW {
+    margin-left: 350px;
+}
+
+.display_text {
+    margin-bottom: 40px;
+}
+
+.text_field {
+    display: flex;
+    align-items: center;
+    background-color: #FFFBF8;
+    border-radius: 20px;
+    margin-right: 20px;
+    width: 400px;
+    height: 50px;
+    padding-left: 20px;
+
+}
+
+.left_content {
+    margin-top: 50px;
+    margin-right: 150px;
+
+
+}
+
+.left_content button {
+    display: flex;
+    justify-content: center;
+    margin: 80px auto;
+
+}
+
+.right_content {
+    margin-top: 50px;
+    max-height: 300px;
+}
+
+.task_action {
+    display: flex;
+    flex-direction: row;
+}
+
+.task_action select {
+    border: none;
+    border-radius: 20px;
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    /* identical to box height */
+    padding: 3%;
+    height: 50px;
+    width: 300px;
+    letter-spacing: 0.05em;
+    margin-right: 20px;
+
+    color: #6C4A4A;
+}
+
+input[type=text] {
+    background-color: #FFFBF8;
+    border-radius: 20px;
+    border: none;
+    margin-right: 20px;
+    width: 400px;
+    height: 50px;
+    padding-left: 2rem;
+}
+
+.right_content #selectname_button {
+    display: flex;
+    margin: 100px auto;
+}
+
+input[type=submit] {
+    font-size: 20px;
+    font-family: "Lato";
+    color: white;
+    border: #BF7B71;
+    background-color: #BF7B71;
+}
+
+.task_button, .add_task_container .task_button, .add_comment_container .task_button {
+    background: #BF7B71;
+    margin-top: 6%;
+    width: 30%;
+    padding: 2%;
+
+    border-radius: 30px;
+    border: none;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+
+.task_button:hover {
+    background: #da998f;
+}
+
+.input_field {
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 20px;
+    color: #6C4A4A;
+
+}
+
+.message_wrapper {
+    display: none;
+    width: 400px;
+}
+
+.message {
+
+    display: flex;
+    align-items: center;
+    background-color: #FFFBF8;
+    border-radius: 20px;
+    margin-right: 20px;
+    width: 400px;
+    height: 50px;
+    padding: 30px;
+    box-sizing: border-box;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 20px;
+    color: #854343;
+
+
+}

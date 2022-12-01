@@ -1,0 +1,33 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #F9ECE3;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.main_content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.health_info_header {
+    display: flex;
+}
+
+.health_info_header #health_info_title {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #6C4A4A;
+}

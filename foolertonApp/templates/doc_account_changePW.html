@@ -1,0 +1,117 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Doctor Account Change Password</title>
+    <link href="{% static 'css/reusable.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/doc_account.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="page_header">
+            <a class="white_link" href="/createtasks/{{current}}/{{date}}">FOOLERTON</a>
+        </div>
+        <div class="main_area">
+
+            <div class="sidebar">
+                <div class="sidebar_wrapper">
+
+                    <h3>Patient:</h3>
+                    {% for ppl in people %}
+                    <p id="patient_name"><a id="patient_link"
+                            href="/createtasks/{{ ppl.pk }}/{{date}}">{{ppl.name}}</a>
+                    </p>
+                    {%endfor%}
+                    <div class="sidebar_line"></div>
+                    <div class="sidebar_tabs">
+
+                        <p class="sidebar_item"><a class="sidebar_link"
+                                href="http://127.0.0.1:8000/createtasks/{{current}}/{{date}}">Tasks</a></p>
+                        <p class="sidebar_selected"><a class="sidebar_link"
+                                href="http://127.0.0.1:8000/healthinfo/{{current}}">Health Information</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="main_content">
+
+                <div class="topbar">
+                    <div class="topbar_child"><img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                    </div>
+                    <a id="account_link" href="http://127.0.0.1:8000/docacc">
+                        <div class="topbar_child">
+                            <p>{{name}}</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="contents">
+                    <div class="title">
+                        <img src="{% static 'assets/account_icon.svg' %}" id="accountIcon" />
+                        <span id="titletext"> Your Profile </span>
+                        <img src="{% static 'assets/account_icon.svg' %}" id="accountIcon_PW" />
+                        <span id="titletext"> Change Password </span>
+                    </div>
+
+                    <div class="left_content">
+                        <div class="display_text">
+                            <p> Name: </p>
+                            <div class="text_field">
+                                <p id="name_value">{{name}}</p>
+                            </div>
+                        </div>
+
+                        <div class="display_text">
+                            <p>Email Address: </p>
+                            <div class="text_field">
+                                <p id="email_value">{{email}}</p>
+                            </div>
+                        </div>
+                        <div id="status_message_wrapper" class="message_wrapper">
+                            <span id="status_message" class="message">{{wrongpassword}}</span>
+                        </div>
+                    </div>
+                    <div class="right_content">
+                        <form action='change' method="POST" id="old_password">
+                            {%csrf_token%}
+                            <div class="display_text">
+                                <p> Old Password: </p>
+                                <input class="input_field" type="text" size=50 name="old_password">
+                            </div>
+
+                            <div class="display_text">
+                                <p>New Password: </p>
+                                <input class="input_field" type="text" size=50 name="new_password">
+                            </div>
+
+                            <div class="display_text">
+                                <p>Re-enter Password: </p>
+                                <input class="input_field" type="text" size=50 name="check">
+                            </div>
+
+
+                           
+                            
+                            <input id="update_submit_button" class="task_button" type="submit" value="Save">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var message_el = document.getElementById("status_message_wrapper");
+    if ("{{wrongpassword}}") {
+        message_el.style.display = "block";
+    }
+
+</script>
+
+</html>

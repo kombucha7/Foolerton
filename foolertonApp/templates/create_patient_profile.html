@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Create Patient</title>
+    <link href="{% static 'css/mng_pat.css' %}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700">
+
+</head>
+
+<body>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <div class="wrapper">
+        <div class="page_header">
+            <a class="white_link" href="/createtasks/{{current}}/{{date}}">FOOLERTON</a>
+        </div>
+
+        <div class="main_columns">
+            <div class="sidebar">
+                <div class="sidebar_wrapper">
+
+                    <h3>Patient:</h3>
+                    {% for ppl in people %}
+                    <p id="patient_name"><a id="patient_link" href="/createtasks/{{ ppl.pk }}/{{date}}">{{ppl.name}}</a>
+                    </p>
+                    {%endfor%}
+                    <div class="sidebar_line"></div>
+                    <div class="sidebar_tabs">
+                        <p class="sidebar_item"><a id="tasks_link"
+                                href="http://127.0.0.1:8000/createtasks/{{current}}/{{date}}">Tasks</a></p>
+                        <p class="sidebar_selected"><a id="healthInfo_link"
+                                href="http://127.0.0.1:8000/healthinfo/{{current}}">Health Information</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main_content">
+                <div class="topbar">
+                    <a id="account_link" href="http://127.0.0.1:8000/docacc">
+                        <img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                        <span>{{name}}</span>
+                    </a>
+                </div>
+
+                <!-- Requires editing -->
+                <div class="main_task_content">
+                    <div class="task_today_col">
+                        <div class="task_col_header">
+                            <img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                            <p>Create Patient Profile</p>
+                            <style>
+                                div {
+                                    white-space: nowrap;
+                                }
+                            </style>
+                        </div>
+                        <form action='http://127.0.0.1:8000/createpat' method="POST">
+                            {%csrf_token%}
+                            <div class="main_content1">
+                                <div class="main_content1_child">
+                                    <p>Patient Name: </p>
+                                    <input class="inputform" type="text" size=50 name="name">
+                                    <!-- </form> -->
+                                </div>
+                            </div>
+                            <div class="main_content2">
+                                <!-- <form action = '/url' method = "GET"> -->
+                                <p>NRIC: </p>
+                                <input class="inputform" type="text" size=50 name="nric">
+                            </div>
+                            <input type="submit" class="createbutton" value="Create">
+                    </div>
+
+                    </form>
+                    <div id="status_message_wrapper" class="message_wrapper">
+                        <span id="status_message" class="message">{{message}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+    var message_el = document.getElementById("status_message_wrapper");
+    if ("{{message}}") {
+        message_el.style.display = "block";
+    }
+
+</script>
+
+</html>

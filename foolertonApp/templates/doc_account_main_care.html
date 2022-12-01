@@ -1,0 +1,94 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Doctor Account Main Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/doc_account.css' %}" />
+    <link href="{% static 'css/reusable.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="page_header">
+            <a class="white_link" href="/createtasks/{{current}}/{{date}}">FOOLERTON</a>
+        </div>
+
+        <div class="main_area">
+            <div class="sidebar">
+                <div class="sidebar_wrapper">
+
+                    <h3>Patient:</h3>
+                    {% for ppl in people %}
+                    <p id="patient_name"><a id="patient_link"
+                            href="/createtasks/{{ ppl.pk }}/{{date}}">{{ppl.name}}</a>
+                    </p>
+                    {%endfor%}
+                    <div class="sidebar_line"></div>
+                    <p class="sidebar_item"><a class="sidebar_link"
+                            href="http://127.0.0.1:8000/createtasks/{{current}}/{{date}}">Tasks</a></p>
+                    <p class="sidebar_selected"><a class="sidebar_link"
+                            href="http://127.0.0.1:8000/healthinfo/{{current}}">Health Information</a></p>
+                </div>
+            </div>
+            <div class="main_content">
+                <div class="topbar">
+                    <div class="topbar_child">
+                        <img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                    </div>
+                    <a id="account_link" href="http://127.0.0.1:8000/docacc">
+                        <div class="topbar_child">
+                            <p>{{name}}</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="contents">
+                    <div class="title">
+                        <img src="{% static 'assets/account_icon.svg' %}" id="accountIcon" />
+                        <span id="titletext"> Your Profile </span>
+                    </div>
+
+                    <div class="left_content">
+                        <div class="display_text">
+                            <p>Name: </p>
+                            <div class="text_field">
+                                <p id="name_value">{{name}}</p>
+                            </div>
+                        </div>
+
+                        <div class="display_text">
+                            <p>Email Address: </p>
+                            <div class="text_field">
+                                <p id="email_value">{{email}}</p>
+                            </div>
+                        </div>
+
+                        <a class="white_link" href="http://127.0.0.1:8000/logout"><button>Logout</button></a>
+                        
+                    </div>
+                    <div class="right_content">
+                        <form action='docacc' method="POST">
+                            {% csrf_token %}
+                            <p>What would you like to do? </p><br>
+                            <div class="task_action">
+                                <select id="action_select" name="options">
+                                    <option value="" disabled selected hidden>Select...</option>
+                                    <option value="update">Update Details</option>
+                                    <option value="change">Change Password</option>
+                                </select>
+
+                                <button>Next</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+{%load static%}
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <title>Health Information Page</title>
+    <link href="{% static 'css/reusable.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/health_info.css' %}" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:600">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="page_header"><a id="healthInfo_link" href="/createtasks/{{current}}/{{date}}">FOOLERTON</a></div>
+
+        <div class="main_area">
+            <div class="sidebar">
+                <div class="sidebar_wrapper">
+                    <h3>Patient:</h3>
+                    {% for ppl in people %}
+                    <p id="patient_name"><a id="patient_link" href="/healthinfo/{{ ppl.pk }}">{{ppl.name}}</a></p>
+                    {%endfor%}
+                    <div class="sidebar_line"></div>
+                    <div class="sidebar_tabs">
+                        <p class="sidebar_item"><a id="tasks_link"
+                                href="http://127.0.0.1:8000/createtasks/{{current}}/{{date}}">Tasks</a></p>
+                        <p class="sidebar_selected"><a id="healthInfo_link"
+                                href="http://127.0.0.1:8000/healthinfo/{{current}}">Health Information</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for last edited info -->
+            <!-- <h4>last edited:{{det.date}}</h4> -->
+
+            <div class="main_content">
+                <div class="topbar">
+                    <a id="account_link" href="http://127.0.0.1:8000/docacc">
+                        <img src="{% static 'assets/account_icon.svg' %}" id="account_icon" />
+                        <span>{{name}}</span>
+                    </a>
+                </div>
+                <div class="second_layer">
+                    <div class="health_info_header">
+                        <img src="{% static 'assets/health_icon.svg' %}" />
+                        <p id="health_info_title">Health Information</p>
+                    </div>
+                    <button type="button" id="health_info_edit_btn">Edit</button>
+                </div>
+                <div class="main_fields">
+                    <div class="age_field">
+                        <p id="age_label">Age:</p>
+                        <!-- <span id="age_input_field"> -->
+                        <input type="hidden" name="id" value="{{pat.pk}}">
+                        <input class="form_input" id="age_value" placeholder="{{det.age}}" name="age"
+                            disabled="disabled" value="{{det.age}}" />
+                        <!-- <span id="age_input_box"></span> -->
+                        <!-- </span> -->
+                        <p id="age_units">years old</p>
+                    </div>
+                    <div class="weight_field">
+                        <p id="weight_label">Weight:</p>
+                        <!-- <span id="weight_input_field"> -->
+                        <input class="form_input" id="weight_value" placeholder="{{det.weight}}" name="weight"
+                            disabled="disabled" value="{{det.weight}}" />
+                        <!-- <span id="weight_input_box"></span> -->
+                        <!-- </span> -->
+                        <p id="weight_units">kg</p>
+                    </div>
+                    <div class="height_field">
+                        <p id="height_label">Height:</p>
+                        <!-- <span id="height_input_field"> -->
+                        <input class="form_input" id="height_value" placeholder="{{det.height}}" name="height"
+                            disabled="disabled" value="{{det.height}}" />
+                        <!-- <span id="height_input_box"></span> -->
+                        <!-- </span> -->
+                        <p id="height_units">cm</p>
+                    </div>
+                    <form id="medical_form_care" action="{% url 'foolerton:upload_medical' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="bp_field">
+                            <p id="bp_label">Blood Pressure:</p>
+                            <input type = "hidden" name = "id" value = "{{pat.pk}}">
+                            <!-- <span id="bp_input_field"> -->
+                            <input class="form_input form_used_input" id="bp_value" placeholder="{{det.bloodPressure}}"
+                                name="blood" disabled="disabled" value="{{det.bloodPressure}}" />
+                            <!-- <span id="bp_input_box"></span> -->
+                            <!-- </span> -->
+                            <p id="bp_units">mmHg</p>
+                        </div>
+                        <div class="hr_field">
+                            <p id="hr_label">Heart Rate:</p>
+                            <!-- <span id="hr_input_field"> -->
+                            <input class="form_input form_used_input" id="hr_value" placeholder="{{det.heartRate}}"
+                                name="heart" disabled="disabled" value="{{det.heartRate}}" />
+                            <!-- <span id="hr_input_box"></span> -->
+                            <!-- </span> -->
+                            <p id="hr_units">bpm</p>
+                        </div>
+                    </form>
+                    <div class="mc_field">
+                        <p id="mc_label">Medical Conditions:</p>
+                        <!-- <span id="mc_input_field"> -->
+                        <input class="form_input" id="mc_value" placeholder="{{det.MedicalCondition}}" name="medical"
+                            disabled="disabled" value="{{det.MedicalCondition}}" />
+                        <!-- <span id="mc_input_box"></span> -->
+                        <!-- </span> -->
+                    </div>
+                    <div class="medication_field">
+                        <p id="medication_label">Medications:</p>
+                        <!-- <span id="medication_input_field"> -->
+                        <input class="form_input" id="medication_value" placeholder="{{det.Medication}}"
+                            name="medication" disabled="disabled" value="{{det.Medication}}" />
+                        <!-- <span id="medication_input_box"></span> -->
+                        <!-- </span> -->
+                    </div>
+                    <div class="allergies_field">
+                        <p id="allergies_label">Allergies:</p>
+                        <!-- <span id="allergies_input_field"> -->
+                        <input class="form_input" id="allergies_value" placeholder="{{det.allergies}}" name="allergies"
+                            disabled="disabled" value="{{det.allergies}}" />
+                        <!-- <span id="allergies_input_box"></span> -->
+                        <!-- </span> -->
+                    </div>
+                </div>
+                <button type="submit" id="update_medical_button" class="task_button button_outside" form="medical_form_care"
+                    style="display: none;">Update</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var edit_btn_el = document.getElementById("health_info_edit_btn");
+    var submit_btn_el = document.getElementById("update_medical_button");
+    var field_els = document.getElementsByClassName("form_used_input");
+
+    // Disable all fields first
+    // Disable all text fields
+    for (var i; i < field_els.length; i++) {
+        field_els[i].disabled = true;
+    }
+
+    edit_btn_el.addEventListener("click", () => {
+        // If going into edit mode
+        if (edit_btn_el.textContent == "Edit") {
+            submit_btn_el.textContent = "Update";
+            edit_btn_el.textContent = "Finish Editing";
+            // Enable all text fields
+            for (var i = 0; i < field_els.length; i++) {
+                field_els[i].disabled = false;
+            }
+            // Enable the submit button
+            submit_btn_el.style.display = "block";
+        }
+        else {
+            window.location.reload();
+            // edit_btn_el.textContent = "Edit";
+            // // Disable all text fields
+            // for(var i=0; i < field_els.length; i++) {
+            //     field_els[i].disabled = true;
+            // }
+            // // Disable the submit button
+            // submit_btn_el.style.display = "none";
+        }
+    });
+
+    submit_btn_el.addEventListener("click", () => {
+        submit_btn_el.textContent = "Updated!";
+    });
+
+
+
+</script>
+
+</html>

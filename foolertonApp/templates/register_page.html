@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register Page</title>
+    <link href="{% static 'css/signup.css'%}" rel="stylesheet" />
+
+    <!--fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:600">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="split_left">
+            <div class="split_left_content">
+                <a href="http://127.0.0.1:8000">
+                    <p class="app_header">FOOLERTON</p>
+                    <img src="{% static '/assets/logo.png'%}" width="560" height="380">
+                </a>
+            </div>
+        </div>
+        <div class="split_right">
+            <p class="signup_header">Sign Up</p>
+            <form class="loginForm" method="POST" action="{% url 'foolerton:createuser' %}" autocomplete="on" id="register_form">
+                {% csrf_token %}
+                <div class="name_field">
+                    <label class="name_input_label" for="name"> <b>Name:</b> </label>
+                    <input type="text" name="name" ,id="name" required>
+                </div>
+
+                <div class="email_field">
+                    <label class="email_input_label_reg" for="email"> <b>Email address:</b> </label>
+                    <input type="text" name="email" , id="email" required>
+                </div>
+
+                <div class="password_field">
+                    <label class="password_input_label" for="password"> <b>Password:</b> </label>
+                    <input type="password" name="password" ,id="password" required>
+                </div>
+
+                <div class="reenter_password_field">
+                    <label class="reenter_password_input_label" for="repassword"> <b>Re-enter password:</b> </label>
+                    <input type="password" name="repassword" ,id="repassword" required>
+                </div>
+
+                <div id="status_message_wrapper" class="message_wrapper" style="margin: auto; margin-top: 20px;">
+                    <span id="status_message" class="message" style="width: fit-content;">
+                        {{message}}
+                        {{Success}}
+                    </span>
+                </div>
+
+                <!-- <div class="submit_button">
+                    <input type="submit" name="login_button" value="Sign Up">
+                </div> -->
+            </form>
+            <button class="submit_button" id="submit_btn" style="margin-left: 80px;">Sign up</button>
+
+        </div>
+    </div>
+</body>
+<script>
+    // Displaying system message
+    var message_wrapper_el = document.getElementById("status_message_wrapper");
+    var message_el = document.getElementById("status_message");
+    if ("{{message}}" || "{{Success}}") {
+        message_wrapper_el.style.display = "block";
+    }
+
+    function validateEmail(email) {
+        console.log(email);
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        console.log(re.test(email));
+        return re.test(email);
+    }
+
+    // Check input before submitting
+    var form_el = document.getElementById("register_form");
+    var new_email_el = document.getElementById("email");
+    var submit_btn_el = document.getElementById("submit_btn");
+
+    submit_btn_el.addEventListener("click", () => {
+        // Block invalid emails
+        if (!validateEmail(new_email_el.value)) {
+            message_el.textContent = "Please provide a valid email!";
+            message_wrapper_el.style.display = "block";
+            return;
+        }
+        else {
+            message_wrapper_el.style.display = "none";
+        }
+        form_el.submit();
+    });
+</script>
+
+</html>
